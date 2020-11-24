@@ -13,17 +13,17 @@ import mediapipe as mp
 # extra stuff for flask:
 @app.route('/')
 def helloworld():
- if request.method == "POST":
-        file = request.files['file']
-    if file:
-        img = Image.open(file)
-        print("Image successfully loaded.")
-    
+	if request.method == "POST":
+		file = request.files['file']
+	if file:
+		img = Image.open(file)
+		print("Image successfully loaded.")
+
 	mp_drawing = mp.solutions.drawing_utils
 	mp_hands = mp.solutions.hands
 	file_list=img
 	# For static images:
-	
+
 	hands = mp_hands.Hands(
 	    static_image_mode=True,
 	    max_num_hands=2,
@@ -50,13 +50,13 @@ def helloworld():
 		annotated_image, hand_landmarks, mp_hands.HAND_CONNECTIONS)
 	  print(cv2.imwrite(
 	      '/tmp/annotated_image' + str(idx) + '.png', cv2.flip(image, 1)))
-	      
+
 	  cv2.imshow('annotated_image', annotated_image) 
-	  
+
 		#waits for user to press any key  
 		#(this is necessary to avoid Python kernel form crashing) 
 	  cv2.waitKey(0)  
-		  
+
 		#closing all open windows  
 	  cv2.destroyAllWindows()  
 	hands.close()
@@ -139,7 +139,7 @@ def helloworld():
 	#convert normalized coordinated to their pixle form 
 	#store each pixle form in its own list either x or y
 	for i in range(21):
-	    
+
 	    normalized_x= float(landmarks_x[i])   
 	    normalized_y= float(landmarks_y[i])
 	    xx_px = min(math.floor(normalized_x * width), width - 1)
@@ -148,8 +148,8 @@ def helloworld():
 	    y_px.append(yy_px)
 	    print('x: ',int(xx_px))
 	    print('y: ',int(yy_px ))
-	    
-	    
+
+
 	#flip image horizantaly
 	image = cv2.flip(image, 1)
 	for i in range(21):
