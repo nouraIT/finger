@@ -4,7 +4,7 @@ from flask_restful import reqparse, Api, Resource
 from flask import request
 app = Flask(__name__)
 
-api = Api(app)
+#api = Api(app)
 
 ###########
 import cv2
