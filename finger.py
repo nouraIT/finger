@@ -5,19 +5,20 @@ from flask import request
 app = Flask(__name__)
 
 api = Api(app)
-if request.method == "POST":
-	file = request.files['file']
-if file:
-	img = Image.open(file)
-	print("Image successfully loaded.")
 
 ###########
 import cv2
 import mediapipe as mp
 
 # extra stuff for flask:
-@app.route('/')
+@app.route('/',methods=["POST"])
 def helloworld():
+	if request.method == "POST":
+		file = request.files['file']
+	if file:
+		img = Image.open(file)
+		print("Image successfully loaded.")
+
 
 	mp_drawing = mp.solutions.drawing_utils
 	mp_hands = mp.solutions.hands
