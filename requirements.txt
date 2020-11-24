@@ -2,4 +2,4 @@ django
 gunicorn
 django-heroku
 mediapipe
-opencv-python=4.0.0 
+opencv-python==4.0.0 
