@@ -1,1 +1,1 @@
-web: gunicorn finger --log-file -
+web: gunicorn finger.py --log-file -
